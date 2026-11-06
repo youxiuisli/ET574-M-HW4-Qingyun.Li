@@ -1,0 +1,11 @@
+# Name: Qingyun Li
+# QCC ID: 24457146
+import random
+
+
+class Die:
+    def __init__(self, sides=6):
+        self.sides = sides
+
+    def roll(self):
+        return random.randint(1, self.sides)

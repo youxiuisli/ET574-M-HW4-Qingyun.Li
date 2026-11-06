@@ -72,6 +72,23 @@ class TestDiceGame(unittest.TestCase):
         self.assertGreater(len(set(roll2_list)), 1)
 
     # --- Students: Add 3 more test cases below ---
+    def test_boundary_totals(self):
+        self.assertEqual(self.game.evaluate_roll(6), "Roll Again")
+        self.assertEqual(self.game.evaluate_roll(7), "Win")
+        self.assertEqual(self.game.evaluate_roll(8), "Roll Again")
+
+    def test_custom_sided_die(self):
+        die = Die(20)
+        for _ in range(100):
+            roll = die.roll()
+            self.assertGreaterEqual(roll, 1)
+            self.assertLessEqual(roll, 20)
+
+    def test_play_round_consistency(self):
+        for _ in range(100):
+            d1, d2, total, result = self.game.play_round()
+            self.assertEqual(total, d1 + d2)
+            self.assertEqual(result, self.game.evaluate_roll(total))
 
 
 

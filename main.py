@@ -22,3 +22,10 @@ class DiceGame:
             return "Lose"
         else:
             return "Roll Again"
+
+    def play_round(self):
+        d1 = self.die1.roll()
+        d2 = self.die2.roll()
+        total = d1 + d2
+        result = self.evaluate_roll(total)
+        return d1, d2, total, result
